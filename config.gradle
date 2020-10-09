@@ -1,0 +1,18 @@
+ext{
+    //android版本控制配置
+    android = [
+            compileSdkVersion : 29,
+            buildToolsVersion : "29.0.1",
+            applicationId : "com.soul.soulproject",
+            minSdkVersion : 15,
+            targetSdkVersion : 29,
+            versionCode : 1,
+            versionName : "1.0"
+
+    ]
+
+    //配置依赖
+    dependencies = [
+            appcompat : 'androidx.appcompat:appcompat:1.0.2'
+    ]
+}
