@@ -35,6 +35,7 @@ public class MediaPlayerManager {
     public static int MEDIA_STATUS = MEDIA_STATUS_STOP;
 
     private static final int H_PROGRESS = 1000;
+    private static final int H_PERCENT = 100;
 
     OnMusicProgressListener onMusicProgressListener;
 
@@ -50,10 +51,9 @@ public class MediaPlayerManager {
                         int percent = (int)((((float) currentPosition) / ((float)mMediaPlayer.getDuration()) * 100));
 
                         onMusicProgressListener.OnProgress(currentPosition,percent);
-                        if (percent < 100){
+                        if (percent < H_PERCENT){
                             handler.sendEmptyMessageDelayed(H_PROGRESS,1000);
                         }
-
 
 
                     }
@@ -83,7 +83,7 @@ public class MediaPlayerManager {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void startPlay(AssetFileDescriptor path){
         try {
-            handler.sendEmptyMessage(H_PROGRESS);
+
             //万一播放第二个或者第三个歌曲的话，这些状态都需要重置
             mMediaPlayer.reset();
             //设置播放资源
@@ -93,6 +93,7 @@ public class MediaPlayerManager {
             //开始播放
             mMediaPlayer.start();
             MEDIA_STATUS = MEDIA_STATUS_PLAY;
+            handler.sendEmptyMessage(H_PROGRESS);
         } catch (IOException e) {
             LogUtils.e(e.toString());
             e.printStackTrace();
