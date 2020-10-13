@@ -2,6 +2,7 @@ package com.soul.soulproject.ui;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
@@ -12,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.soul.framework.base.BasePagerAdapter;
+import com.soul.framework.entity.Contants;
 import com.soul.framework.manager.MediaPlayerManager;
 import com.soul.framework.utils.AnimationUtils;
+import com.soul.framework.utils.SpUtils;
 import com.soul.soulproject.R;
 
 import java.util.ArrayList;
@@ -73,12 +76,12 @@ public class GuideActivity extends AppCompatActivity {
      * 查找控件
      */
     private void findView() {
-        mViewPager = (ViewPager) findViewById(R.id.view_page);
-        imgMusic = (ImageView) findViewById(R.id.img_music);
-        txtSkip = (TextView) findViewById(R.id.txt_skip);
-        imgIndex1 = (ImageView) findViewById(R.id.img_index1);
-        imgIndex2 = (ImageView) findViewById(R.id.img_index2);
-        imgIndex3 = (ImageView) findViewById(R.id.img_index3);
+        mViewPager = findViewById(R.id.view_page);
+        imgMusic = findViewById(R.id.img_music);
+        txtSkip = findViewById(R.id.txt_skip);
+        imgIndex1 = findViewById(R.id.img_index1);
+        imgIndex2 = findViewById(R.id.img_index2);
+        imgIndex3 = findViewById(R.id.img_index3);
 
         startView = LayoutInflater.from(this).inflate(R.layout.layout_start, null);
         smileView = LayoutInflater.from(this).inflate(R.layout.layout_smile, null);
@@ -150,17 +153,27 @@ public class GuideActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
-                if (isPlayMusic){
+                if (isPlayMusic) {
                     imgMusic.setBackgroundResource(R.drawable.img_guide_music_off);
                     objectAnimatorMusic.pause();
                     mediaPlayerManager.pausePlay();
                     isPlayMusic = false;
-                }else {
+                } else {
                     imgMusic.setBackgroundResource(R.drawable.img_guide_music);
                     objectAnimatorMusic.resume();
                     mediaPlayerManager.continuePlay();
-                    isPlayMusic  = true;
+                    isPlayMusic = true;
                 }
+            }
+        });
+
+        txtSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GuideActivity.this,LoginActivity.class);
+                startActivity(intent);
+                SpUtils.getInstance(GuideActivity.this).putBoolean(Contants.SP_IS_FIRST_APP,false);
+                finish();
             }
         });
 
@@ -185,10 +198,9 @@ public class GuideActivity extends AppCompatActivity {
         guideSmileDrawable.start();
         guidNightDrawable.start();
         objectAnimatorMusic.start();
-        if (!mediaPlayerManager.isPlaying()){
+        if (!mediaPlayerManager.isPlaying()) {
             mediaPlayerManager.startPlay(assetFileDescriptor);
         }
-
 
 
     }
@@ -201,7 +213,7 @@ public class GuideActivity extends AppCompatActivity {
         guideSmileDrawable.stop();
         guidNightDrawable.stop();
         objectAnimatorMusic.cancel();
-        if (mediaPlayerManager.isPlaying()){
+        if (mediaPlayerManager.isPlaying()) {
             mediaPlayerManager.pausePlay();
         }
 

@@ -61,7 +61,7 @@ public class IndexActivity extends AppCompatActivity {
             SpUtils.getInstance(this).putBoolean(Contants.SP_IS_FIRST_APP,false);
         }else {
             //如果不是第一次登陆则判断是否是登陆过
-            boolean isToken = SpUtils.getInstance(this).getBoolean(Contants.SP_TOKEN, true);
+            boolean isToken = SpUtils.getInstance(this).getBoolean(Contants.SP_TOKEN, false);
             if (isToken){
                 intent.setClass(this, MainActivity.class);
             }else {
@@ -69,6 +69,7 @@ public class IndexActivity extends AppCompatActivity {
             }
         }
         startActivity(intent);
+        finish();
 
     }
 

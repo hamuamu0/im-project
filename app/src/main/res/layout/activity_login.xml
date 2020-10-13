@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/img_login_bg"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/edt_phone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edt_login"
+        android:hint="电话号码"
+        android:textColorHint="#b2b2b2"
+        android:cursorVisible="false"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/edt_code"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edt_login"
+            android:cursorVisible="false"
+            android:hint="验证码"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="10dp"
+            android:textColorHint="#b2b2b2"
+            android:padding="5dp"/>
+
+        <Button
+            android:id="@+id/btn_send_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:background="#1296db"
+            android:textColor="#ffffff"
+            android:text="发送"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="30dp"
+        android:background="#1296db"
+        android:textColor="#ffffff"
+        android:text="登陆"
+        android:textSize="18sp"/>
+
+
+
+</LinearLayout>

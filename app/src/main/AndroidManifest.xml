@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.IndexActivity"
+        <activity android:name=".test.TestActivity"
             android:theme="@style/IndexTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,8 +19,15 @@
         </activity>
 
         <activity android:name=".ui.GuideActivity"/>
-        <activity android:name=".ui.LoginActivity"/>
+
+        <activity android:name=".ui.LoginActivity"
+            android:theme="@style/IndexTheme"/>
+
         <activity android:name=".MainActivity"/>
+
+
+
+
     </application>
 
 </manifest>
