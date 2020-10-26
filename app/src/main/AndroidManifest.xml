@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.soul.soulproject.BmobContentProvider">
+        </provider>
+
         <activity android:name=".test.TestActivity"
             android:theme="@style/IndexTheme">
             <intent-filter>

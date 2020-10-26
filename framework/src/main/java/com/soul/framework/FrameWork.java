@@ -1,5 +1,9 @@
 package com.soul.framework;
 
+import android.content.Context;
+
+import com.soul.framework.manager.BmobManager;
+
 /**
  * 类或接口的描述信息
  *
@@ -23,5 +27,10 @@ public class FrameWork {
             }
         }
         return mFrameWork;
+    }
+
+    public void initFrameWork(Context mContext){
+
+        BmobManager.getInstance().initBmob(mContext);
     }
 }

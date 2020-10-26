@@ -13,6 +13,12 @@ ext{
 
     //配置依赖
     dependencies = [
-            appcompat : 'androidx.appcompat:appcompat:1.0.2'
+            appcompat : 'androidx.appcompat:appcompat:1.0.2',
+            useLibrary : 'org.apache.http.legacy'
+    ]
+
+    //仓库
+    maven = [
+            "bmobUrl" : "https://dl.bintray.com/chaozhouzhang/maven"
     ]
 }
